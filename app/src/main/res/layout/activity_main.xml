@@ -5,6 +5,7 @@
     android:layout_height="match_parent"
     android:background="#F4F4F4"
     android:orientation="vertical"
+
     tools:context=".MainActivity">
 
     <LinearLayout
@@ -70,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="-60dp"
-        android:layout_marginRight="16dp"></android.support.v7.widget.RecyclerView>
+        android:layout_marginRight="16dp" />
 
     <TextView
         android:id="@+id/end_of_duties_txt_view"
@@ -81,5 +82,4 @@
         android:textAlignment="center"
         android:textColor="#9A9A9A"
         android:textSize="16sp" />
-
 </LinearLayout>
