@@ -46,7 +46,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/btnAddNew"
+                android:id="@+id/add_new_duty_btn"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_marginLeft="50dp"
