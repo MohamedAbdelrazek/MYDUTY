@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.WirelessDynamics.ToDoApp.roomDb.Duty;
+import com.facebook.stetho.Stetho;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Stetho.initializeWithDefaults(this);
         RecyclerView mDutiesRecyclerView = findViewById(R.id.duties_recycler_view);
         Button mNewDutyButton = findViewById(R.id.add_new_duty_btn);
         DutyDataBaseHelper mDutyDataBaseHelper = new DutyDataBaseHelper(this);
