@@ -1,6 +1,5 @@
 package com.WirelessDynamics.ToDoApp;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.os.AsyncTask;
@@ -8,13 +7,11 @@ import android.os.AsyncTask;
 import com.WirelessDynamics.ToDoApp.roomDb.AppDataBase;
 import com.WirelessDynamics.ToDoApp.roomDb.Duty;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 public class DutyUtils {
 
-    private String DB_NAME = "db_Duty";
     private AppDataBase appDataBase;
 
     public DutyUtils(Context context) {
@@ -45,7 +42,21 @@ public class DutyUtils {
         }.execute().get();
 
     }
-    
+
+    public Integer getUnDoneDutiesCount() throws ExecutionException, InterruptedException {
+
+
+        return new AsyncTask<Void, Void, Integer>() {
+            @Override
+            protected Integer doInBackground(Void... voids) {
+
+
+                return appDataBase.dutyDao().getUnDoneDutiesCount();
+            }
+
+        }.execute().get();
+
+    }
 
     public void updateDutyState(final int id, final Boolean state) {
         new AsyncTask<Void, Void, Void>() {
