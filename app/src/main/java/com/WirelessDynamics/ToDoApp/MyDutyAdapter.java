@@ -16,15 +16,13 @@ import java.util.ArrayList;
 
 public class MyDutyAdapter extends RecyclerView.Adapter<MyDutyAdapter.MyViewHolder> {
 
-    Context mContext;
-    ArrayList<Duty> myDutyArrayList;
-    private DutyUtils mDutyUtils;
+    private final ArrayList<Duty> myDutyArrayList;
+    private final DutyDataBaseHelper mDutyDataBaseHelper;
 
 
     public MyDutyAdapter(Context context, ArrayList<Duty> dutyArrayList) {
-        this.mContext = context;
         this.myDutyArrayList = dutyArrayList;
-        mDutyUtils = new DutyUtils(context);
+        mDutyDataBaseHelper = new DutyDataBaseHelper(context);
     }
 
     @NonNull
@@ -56,10 +54,10 @@ public class MyDutyAdapter extends RecyclerView.Adapter<MyDutyAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView titleTxtView, descTxtView, dateTxtView;
-        private CheckBox isDoneCheckBox;
+        private final TextView titleTxtView, descTxtView, dateTxtView;
+        private final CheckBox isDoneCheckBox;
 
-        public MyViewHolder(@NonNull final View itemView) {
+        private MyViewHolder(@NonNull final View itemView) {
             super(itemView);
             titleTxtView = itemView.findViewById(R.id.item_title);
             descTxtView = itemView.findViewById(R.id.item_desc);
@@ -73,11 +71,11 @@ public class MyDutyAdapter extends RecyclerView.Adapter<MyDutyAdapter.MyViewHold
                     if (isDoneCheckBox.isChecked()) {
 
 
-                        mDutyUtils.updateDutyState(getAdapterPosition() + 1, true);
+                        mDutyDataBaseHelper.updateDutyState(getAdapterPosition() + 1, true);
 
 
                     } else {
-                        mDutyUtils.updateDutyState(getAdapterPosition() + 1, false);
+                        mDutyDataBaseHelper.updateDutyState(getAdapterPosition() + 1, false);
 
 
                     }

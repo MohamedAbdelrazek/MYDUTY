@@ -2,7 +2,6 @@ package com.WirelessDynamics.ToDoApp.roomDb;
 
 
 import android.arch.persistence.room.Dao;
-import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -13,7 +12,7 @@ public interface DutyDao {
 
 
     @Insert
-    Long insertTask(Duty duty);
+    void insertTask(Duty duty);
 
 
     @Query("SELECT * FROM duty ")
@@ -23,9 +22,7 @@ public interface DutyDao {
     int getUnDoneDutiesCount();
 
 
-    @Delete
-    void deleteTask(Duty duty);
 
     @Query("UPDATE Duty SET isDone= :isDone WHERE dutyId = :id")
-      int updateDutyState(int id, Boolean isDone);
+    void updateDutyState(int id, Boolean isDone);
 }

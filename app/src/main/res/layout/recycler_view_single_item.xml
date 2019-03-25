@@ -19,7 +19,7 @@
             android:layout_marginTop="19dp"
             android:text="Wireless Dynamics"
             android:textColor="@android:color/black"
-            android:textSize="22sp" />
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/item_desc"
@@ -28,22 +28,23 @@
             android:layout_marginTop="8dp"
             android:text="Finishing Wireless Dynamic Task"
             android:textColor="#ADADAD"
-            android:textSize="18sp" />
+            android:textSize="15sp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="125dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
+
+
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/item_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="right"
+            android:gravity="center"
             android:text="Toady"
             android:textColor="#F63EA5"
             android:textSize="18sp" />
@@ -53,6 +54,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
+            android:layout_marginTop="10dp"
             android:gravity="center" />
     </LinearLayout>
 

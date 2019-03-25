@@ -10,11 +10,11 @@ import com.WirelessDynamics.ToDoApp.roomDb.Duty;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-public class DutyUtils {
+class DutyDataBaseHelper {
 
-    private AppDataBase appDataBase;
+    private final AppDataBase appDataBase;
 
-    public DutyUtils(Context context) {
+    public DutyDataBaseHelper(Context context) {
         appDataBase = Room.databaseBuilder(context, AppDataBase.class, "duties").build();
 
     }

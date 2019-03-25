@@ -18,7 +18,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.WirelessDynamics.ToDoApp.roomDb.Duty;
-import com.facebook.stetho.Stetho;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -33,11 +32,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Stetho.initializeWithDefaults(this);
         RecyclerView mDutiesRecyclerView = findViewById(R.id.duties_recycler_view);
         Button mNewDutyButton = findViewById(R.id.add_new_duty_btn);
-        DutyUtils mDutyUtils = new DutyUtils(this);
-
+        DutyDataBaseHelper mDutyDataBaseHelper = new DutyDataBaseHelper(this);
         mNewDutyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -46,11 +43,9 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        mDutyUtils = new DutyUtils(this);
-
 
         try {
-            myDutyModelArrayList = (ArrayList<Duty>) mDutyUtils.getDuties();
+            myDutyModelArrayList = (ArrayList<Duty>) mDutyDataBaseHelper.getDuties();
 
         } catch (ExecutionException e) {
             e.printStackTrace();
@@ -62,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         mDutiesRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         try {
-            Integer n = mDutyUtils.getUnDoneDutiesCount();
+            Integer n = mDutyDataBaseHelper.getUnDoneDutiesCount();
             Toast.makeText(this, "The number of un done items is " + n, Toast.LENGTH_SHORT).show();
 
             if (n > 0) {
@@ -81,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void createNotification(String aMessage, Context context) {
+    private void createNotification(String aMessage, Context context) {
 
 
         String id = context.getString(R.string.channel_id); // default_channel_id
@@ -138,8 +133,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
 
-        //notify the user with unDone tasks after exiting the app ..
-        // ID of notification
         int NOTIFY_ID = 0;
         mNotifiManager.notify(NOTIFY_ID, mNotification);
 

@@ -10,24 +10,22 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.WirelessDynamics.ToDoApp.roomDb.Duty;
-import com.facebook.stetho.Stetho;
 
 public class NewDutyActivity extends AppCompatActivity {
     private EditText mTitle, mDesc, mDate;
-    private DutyUtils mDutyUtils;
+    private DutyDataBaseHelper mDutyDataBaseHelper;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_duty);
-        Stetho.initializeWithDefaults(this);
         mTitle = findViewById(R.id.duty_title_edit_txt);
         mDesc = findViewById(R.id.duty_desc_edit_txt);
         mDate = findViewById(R.id.duty_date_edit_txt);
         Button mSaveButton = findViewById(R.id.save_btn);
         Button mCancelButton = findViewById(R.id.cancel_btn);
-        mDutyUtils = new DutyUtils(this);
+        mDutyDataBaseHelper = new DutyDataBaseHelper(this);
         mCancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +49,7 @@ public class NewDutyActivity extends AppCompatActivity {
                     duty.setDutyDesc(description);
                     duty.setDutyTitle(title);
                     duty.setDone(false);
-                    mDutyUtils.insertTask(duty);
+                    mDutyDataBaseHelper.insertTask(duty);
 
                     Toast.makeText(NewDutyActivity.this, "Successfully added", Toast.LENGTH_SHORT).show();
                     Intent mainIntent = new Intent(getApplicationContext(), MainActivity.class);

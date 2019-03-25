@@ -65,7 +65,8 @@
                 android:layout_height="55dp"
                 android:background="@drawable/bg_input_task"
                 android:hint="What You Wanna Do?"
-                android:inputType="text"
+                android:inputType="textCapWords"
+                android:maxLength="40"
                 android:paddingLeft="12dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="#B5B5B5" />
@@ -95,8 +96,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/bg_input_task"
                 android:hint="How Do You Do That?"
-                android:inputType="text"
-                android:maxLength="25"
+                android:inputType="textCapSentences"
                 android:paddingLeft="12dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="#B5B5B5" />
@@ -126,7 +126,7 @@
                 android:layout_height="55dp"
                 android:background="@drawable/bg_input_task"
                 android:hint="When will You Finish ?"
-                android:inputType="text"
+                android:inputType="textCapWords"
                 android:paddingLeft="12dp"
                 android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="#B5B5B5" />
